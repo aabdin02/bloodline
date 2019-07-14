@@ -102,16 +102,16 @@ SSML_text = """
       </express-as>
    </speak>"""
 
-# with open('sample/hello_world.wav', 'wb') as audio_file:
-#     audio_file.write(
-#         text_to_speech.synthesize(
-#             'Hello world',
-#             voice='en-US_AllisonVoice',
-#             accept='audio/wav'
-#         ).get_result().content)
+with open('sample/hello_world.wav', 'wb') as audio_file:
+     audio_file.write(
+         text_to_speech.synthesize(
+             'Hello world',
+             voice='en-US_AllisonVoice',
+             accept='audio/wav'
+         ).get_result().content)
 
-text_to_speech.synthesize_using_websocket(SSML_text,
-                                   test_callback,
-                                   accept='audio/wav',
-                                   voice="en-US_AllisonVoice"
-                                  )
+#text_to_speech.synthesize_using_websocket(SSML_text,
+ #                                  test_callback,
+  #                                 accept='audio/wav',
+   #                                voice="en-US_AllisonVoice"
+    #                              )

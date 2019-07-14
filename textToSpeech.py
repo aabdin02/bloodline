@@ -16,7 +16,7 @@ text_to_speech = TextToSpeechV1(
     url='https://stream.watsonplatform.net/text-to-speech/api'
 )
 
-# text_to_speech.disable_SSL_verification()
+text_to_speech.disable_SSL_verification()
 
 class Play(object):
     """

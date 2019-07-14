@@ -42,6 +42,7 @@ speech_to_text = SpeechToTextV1(
     iam_apikey='vB1y_jig8a_AfMn3yhCsJLkGIf8XkGcY3ykT3QD3_iZi',
     url='https://stream.watsonplatform.net/speech-to-text/api')
 
+speech_to_text.disable_SSL_verification()
 # define callback for the speech to text service
 class MyRecognizeCallback(RecognizeCallback):
     def __init__(self):

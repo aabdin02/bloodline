@@ -1,7 +1,8 @@
-TriageIntroduction = "Triage is the method of quickly evaluating, prioritizing and sorting patients into 3 categories. Immediate, Delayed or Dead."
-Rule = "Each evaluation should take 5-10 seconds. Triage is not first aid, but rather a quick evaluation to place them into the approriate first aid area."
+TriageIntroduction = "Hello World. My name is Bloodline. I am here to help you get the First Aid you need and give you the information you need to provide care for other humans. "
+Rule = " This process will ask you series of questions with a yes or no response. These questions will guide me to find you the best possible solution to the care you need."
 
-walkingQuestion = "Is this person able to walk?"
+walkingQuestion = "Are you able to move from one location to another?"
+walkingAnswer = "Are you able to provide First Aid for someone else within your vicinity?"
 
 breathing1 = "Please check if the victim is not breathing."
 breathing2 = "Open their airway to see of they start breathing."
@@ -30,6 +31,8 @@ from time import sleep
 
 from textToSpeech import *
 from speechToText import *
+
+
 
 lock = threading.Lock()
 
@@ -84,7 +87,7 @@ def TriageWorker():
 
     # intro()
 
-    walking = TriageNode(walkingQuestion+"", walkingQuestion, "Green", "Next")
+    walking = TriageNode(TriageIntroduction + "" + Rule, walkingQuestion, walkingAnswer, "Next")
     breathing = TriageNode(breathing1 + " " + breathing2, breathingQuestion, "Next", "Black")
     breathRate = TriageNode(breathingRate1, breathingRateQuestion, "Red", "Next")
     bleeding = TriageNode(bleeding1, bleedingQuestion, "Red", "Next")

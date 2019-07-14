@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Blood Line</title>
+    <link rel="stylesheet" href="css/style.css">
+    <link href="https://fonts.googleapis.com/css?family=Roboto+Condensed&display=swap" rel="stylesheet">
+  </head>
+  <body>
+
+    <img src="images/background.png" alt="background" id="backgroundImage">
+
+    <img src="images/logo.png" alt="Bloodline Logo" id="logo">
+    <p id="question"></p>
+    <div class="navbar">
+      <button onClick="" id="backward"><img src="images/backward.png" id="backimage"></button>
+      <button onClick="" id="repeat"><img src="images/sound.png" id="repeatimage"></button>
+      <button onClick="window.location.href = 'question2.html'; localStorage.setItem('answer', 'yes');" class= "answer" id="yes" value="yes"></button>
+      <button onClick="window.location.href = 'Safe.html'; localStorage.setItem('answer', 'no');" class="answer" id="no" value="no"></button>
+
+  </div>
+
+
+    <script>
+
+    function toQuestion(f) {
+      var question = ["Thank you for your Time. Please Escort the Patient to the nearest Safe Location if Possible.", "question2", "question3" ];
+      return question[f];
+    }
+
+    document.getElementById("question").innerHTML = toQuestion(0);
+    </script>
+    <script>
+
+  <form action="./contact" method="post">
+      <input type="text" name="projectFilepath">
+      <input type="submit">
+  </form>
+
+  <div id="touchsurface">Swipe Me</div>
+
+  </body>
+</html>

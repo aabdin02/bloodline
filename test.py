@@ -5,7 +5,8 @@ app = Flask(__name__)
 
 #how to include html file
 def index():
-   return render_template("helloworld.html")
+   return render_template("index.html")
+#return render_template("helloworld.html")
 
 #how to include a button
 @app.route('/contact', methods=['POST','GET'])   
@@ -20,6 +21,9 @@ def contact():
             pass # unknown
     elif request.method == 'GET':
         return render_template('helloworld.html', form=form)
-    
+
+#@app.route('/handle_data', methods=['POST'])
+#def handle_data():
+ #   projectpath = request.form['projectFilepath']    
 if __name__ == '__main__':
    app.run(debug = True)

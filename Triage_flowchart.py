@@ -126,7 +126,8 @@ def TriageWorker():
         elif answer == "go back":
             triage = triage.back
             continue
-
+        print(answer)
+        print(nextAction)
         if nextAction in Results:
             print(Results[nextAction])
             textToSpeech(Results[nextAction])

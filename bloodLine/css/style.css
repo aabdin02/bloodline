@@ -1,0 +1,74 @@
+body {
+  overflow: hidden;
+  font-family: 'Roboto Condensed', sans-serif;
+  font-size: 10vw;
+
+
+}
+
+#logo {
+  position: absolute;
+  top:30px;
+  left: 50px;
+  width: 30vw;
+  z-index: 2;
+}
+
+#question{
+  position: absolute;
+  left: auto;
+  top: 15vw;
+  margin: 11vw;
+  padding: 5vw;
+  background-color: white;
+  border-radius: 1.5rem;
+  z-index: 1;
+}
+
+ #answer {
+   position: absolute;
+   left: auto;
+   top: 15vw;
+   margin: 11vw;
+   padding: 5vw;
+   background-color: white;
+   border-radius: 1.5rem;
+   z-index: 1;
+}
+#repeatimage {
+   width: 13vw;
+   position: absolute;
+   left: 45vw;
+   bottom: 6vw;
+
+}
+
+#backimage{
+  width: 10vw;
+  position: absolute;
+  left: 8vw;
+  bottom: 7vw;
+
+}
+
+#backgroundImage{
+  display: absolute;
+  width:100vw;
+  z-index: -5;
+  overflow: hidden;
+  vertical-align:middle;
+  height: 100vh;
+  margin: 0;
+}
+
+#yes {
+  position: absolute;
+  left: 30vw;
+  bottom: 3vw;
+}
+
+#no {
+  position: absolute;
+  right: 25vw;
+  bottom: 3vw;
+}

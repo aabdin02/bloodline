@@ -10,7 +10,10 @@ from __future__ import print_function
 import pyaudio
 from ibm_watson import SpeechToTextV1
 from ibm_watson.websocket import RecognizeCallback, AudioSource
-from threading import Thread
+import threading
+# from threading import Thread
+
+messageS = []
 
 try:
     from Queue import Queue, Full
@@ -45,7 +48,12 @@ class MyRecognizeCallback(RecognizeCallback):
         RecognizeCallback.__init__(self)
 
     def on_transcription(self, transcript):
-        print(transcript)
+        # print(type(transcript[0]))
+        confidence = transcript[0]['confidence']
+        # print(confidence)
+        if confidence > 0.75:
+            messageS.append(transcript[0]['transcript'])
+            print(transcript[0]['transcript'])
 
     def on_connected(self):
         print('Connection was successful')
@@ -68,13 +76,13 @@ class MyRecognizeCallback(RecognizeCallback):
     def on_close(self):
         print("Connection closed")
 
-# this function will initiate the recognize service and pass in the AudioSource
-def recognize_using_weboscket(*args):
-    mycallback = MyRecognizeCallback()
-    speech_to_text.recognize_using_websocket(audio=audio_source,
-                                             content_type='audio/l16; rate=44100',
-                                             recognize_callback=mycallback,
-                                             interim_results=True)
+# # this function will initiate the recognize service and pass in the AudioSource
+# def recognize_using_weboscket(*args):
+#     mycallback = MyRecognizeCallback()
+#     speech_to_text.recognize_using_websocket(audio=audio_source,
+#                                              content_type='audio/l16; rate=44100',
+#                                              recognize_callback=mycallback,
+#                                              interim_results=True)
 
 ###############################################
 #### Prepare the for recording using Pyaudio ##
@@ -107,22 +115,22 @@ stream = audio.open(
     start=False
 )
 
-#########################################################################
-#### Start the recording and start service to recognize the stream ######
-#########################################################################
-
-print("Enter CTRL+C to end recording...")
-stream.start_stream()
-
-try:
-    recognize_thread = Thread(target=recognize_using_weboscket, args=())
-    recognize_thread.start()
-
-    while True:
-        pass
-except KeyboardInterrupt:
-    # stop recording
-    stream.stop_stream()
-    stream.close()
-    audio.terminate()
-    audio_source.completed_recording()
+# #########################################################################
+# #### Start the recording and start service to recognize the stream ######
+# #########################################################################
+#
+# print("Enter CTRL+C to end recording...")
+# stream.start_stream()
+#
+# try:
+#     recognize_thread = threading.Thread(target=recognize_using_weboscket, args=())
+#     recognize_thread.start()
+#
+#     while True:
+#         pass
+# except KeyboardInterrupt:
+#     # stop recording
+#     stream.stop_stream()
+#     stream.close()
+#     audio.terminate()
+#     audio_source.completed_recording()

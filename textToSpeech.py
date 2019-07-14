@@ -15,7 +15,9 @@ text_to_speech = TextToSpeechV1(
     iam_apikey='Qp1oglM5ctOB37T4bGopMN_i6un-jNxetrd9xHLf4rCf',
     url='https://stream.watsonplatform.net/text-to-speech/api'
 )
-text_to_speech.disable_SSL_verification()
+
+# text_to_speech.disable_SSL_verification()
+
 class Play(object):
     """
     Wrapper to play the audio in a blocking mode
@@ -61,7 +63,7 @@ class MySynthesizeCallback(SynthesizeCallback):
         self.play = Play()
 
     def on_connected(self):
-        print('Opening stream to play')
+        # print('Opening stream to play')
         self.play.start_streaming()
 
     def on_error(self, error):
@@ -74,7 +76,7 @@ class MySynthesizeCallback(SynthesizeCallback):
         self.play.write_stream(audio_stream)
 
     def on_close(self):
-        print('Completed synthesizing')
+        # print('Completed synthesizing')
         self.play.complete_playing()
 
 test_callback = MySynthesizeCallback()
@@ -102,16 +104,16 @@ SSML_text = """
       </express-as>
    </speak>"""
 
-with open('sample/hello_world.wav', 'wb') as audio_file:
-     audio_file.write(
-         text_to_speech.synthesize(
-             'Hello world',
-             voice='en-US_AllisonVoice',
-             accept='audio/wav'
-         ).get_result().content)
+# with open('sample/hello_world.wav', 'wb') as audio_file:
+#      audio_file.write(
+#          text_to_speech.synthesize(
+#              'Hello world',
+#              voice='en-US_AllisonVoice',
+#              accept='audio/wav'
+#          ).get_result().content)
 
-#text_to_speech.synthesize_using_websocket(SSML_text,
- #                                  test_callback,
-  #                                 accept='audio/wav',
-   #                                voice="en-US_AllisonVoice"
-    #                              )
+# text_to_speech.synthesize_using_websocket(SSML_text,
+#                                   test_callback,
+#                                   accept='audio/wav',
+#                                   voice="en-US_AllisonVoice"
+#                                  )

@@ -43,7 +43,7 @@ def textToSpeech(str):
                                       voice="en-US_AllisonVoice"
                                      )
     lock.release()
-
+    
 class TriageNode:
     def __init__(self, instruction, question, yesResult, noResult):
         self.triageI = instruction
@@ -84,7 +84,7 @@ def TriageWorker():
 
     # intro()
 
-    walking = TriageNode('', walkingQuestion, "Green", "Next")
+    walking = TriageNode(walkingQuestion+"", walkingQuestion, "Green", "Next")
     breathing = TriageNode(breathing1 + " " + breathing2, breathingQuestion, "Next", "Black")
     breathRate = TriageNode(breathingRate1, breathingRateQuestion, "Red", "Next")
     bleeding = TriageNode(bleeding1, bleedingQuestion, "Red", "Next")
@@ -110,19 +110,20 @@ def TriageWorker():
     while True:
         triage.getInstruction()
         answer = triage.getAnswers()
-        if answer: answer = answer.upper()
+       # if answer:
+        #    answer = answer.upper()
 
         while answer not in valid_answers:
-            # print(invalid_answers)
+            print(invalid_answers + " Invalid Answer")
             # textToSpeech(invalid_answers)
             answer = triage.getAnswers()
-            if answer: answer = answer.upper()
+            #if answer: answer = answer.upper()
 
         nextAction = None
-        if answer == "Yes": nextAction = triage.yesResult
-        elif answer == "No": nextAction = triage.noResult
-        elif answer == "Repeat": continue
-        elif answer == "Go back":
+        if answer == "yes": nextAction = triage.yesResult
+        elif answer == "no": nextAction = triage.noResult
+        elif answer == "repeat": continue
+        elif answer == "go back":
             triage = triage.back
             continue
 

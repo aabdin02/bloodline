@@ -102,7 +102,7 @@ SSML_text = """
       </express-as>
    </speak>"""
 
-# with open('hello_world.wav', 'wb') as audio_file:
+# with open('sample/hello_world.wav', 'wb') as audio_file:
 #     audio_file.write(
 #         text_to_speech.synthesize(
 #             'Hello world',

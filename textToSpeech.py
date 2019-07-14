@@ -1,10 +1,10 @@
 # You need to install pyaudio to run this example
+# brew install portaudio
 # pip install pyaudio
 
 # In this example, the websocket connection is opened with a text
 # passed in the request. When the service responds with the synthesized
 # audio, the pyaudio would play it in a blocking mode
-
 from __future__ import print_function
 from ibm_watson import TextToSpeechV1
 from ibm_watson.websocket import SynthesizeCallback
@@ -15,7 +15,7 @@ text_to_speech = TextToSpeechV1(
     iam_apikey='Qp1oglM5ctOB37T4bGopMN_i6un-jNxetrd9xHLf4rCf',
     url='https://stream.watsonplatform.net/text-to-speech/api'
 )
-
+text_to_speech.disable_SSL_verification()
 class Play(object):
     """
     Wrapper to play the audio in a blocking mode
